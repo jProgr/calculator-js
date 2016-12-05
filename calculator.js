@@ -1,4 +1,5 @@
 var calculation = "";
+var result = 0;
 
 function number_entry()
 {
@@ -41,15 +42,34 @@ function checkForDoubleDot()
 
 function calculate()
 {
+    // Gets numbers and operations
+    const numbers = calculation.split(/[\+\-\*\/]/).map((n) => { return parseFloat(n); });
+    const op = calculation.split(/\d/).filter((c) => { return (c) ? true : false; }).filter((c) => { return (c !== ".") ? true : false; });     // Filters dots and empty strings with those string.filter().filter()
     
+    console.log(numbers);
+    console.log(op);
+    
+    // Operates
+    result += numbers[0];
+    for (var i=0; i<op.length; i++)
+    {
+        switch (op[0])
+        {
+            case "+": result += numbers[i + 1]; break;
+            case "-": result -= numbers[i + 1]; break;
+            case "*": result *= numbers[i + 1]; break;
+            case "/": result /= (numbers[i + 1] === 0) ? 1 : numbers[i + 1]; break;
+        }
+    }
+    console.log("Total: " + result);
 }
 
 $(document).ready(function()
 {
     // On key pad
     var number_pad = $(".number");
-    number_pad.on("click", number_entry);
     var operation_pad = $(".operation");
+    number_pad.on("click", number_entry);
     operation_pad.on("click", operation_entry);
 });
 
