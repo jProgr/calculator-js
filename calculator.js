@@ -6,11 +6,32 @@ function number_entry()
     console.log(calculation);
 }
 
+function operation_entry()
+{
+    if (this.textContent === "C") { calculation = ""; }
+    else
+    {
+        calculation += this.textContent;
+        checkForDoubleOp();
+    }
+    console.log(calculation);
+}
+
+function checkForDoubleOp()
+{
+    // searches for double +, -, *, /
+    const last_chars = calculation.slice(-2);
+    const number_then_op = /\d[\+\-\*\/]/
+    if (!number_then_op.test(last_chars)) { calculation = calculation.slice(0, -2) + calculation.slice(-1); }
+}
+
 $(document).ready(function()
 {
-    // On number entry
+    // On key pad
     var number_pad = $(".number");
     number_pad.on("click", number_entry);
+    var operation_pad = $(".operation");
+    operation_pad.on("click", operation_entry);
 });
 
 /*
