@@ -8,21 +8,40 @@ function number_entry()
 
 function operation_entry()
 {
-    if (this.textContent === "C") { calculation = ""; }
-    else
+    switch (this.textContent)
     {
-        calculation += this.textContent;
-        checkForDoubleOp();
+        case "C": calculation = ""; break;
+        case ".": checkForDoubleDot(); break;
+        case "=": calculate(); break;
+        default: calculation += this.textContent; checkForDoubleOp();
     }
     console.log(calculation);
 }
 
 function checkForDoubleOp()
 {
-    // searches for double +, -, *, /
+    // Searches for double +, -, *, /
     const last_chars = calculation.slice(-2);
-    const number_then_op = /\d[\+\-\*\/]/
+    const number_then_op = /\d[\+\-\*\/]/;
     if (!number_then_op.test(last_chars)) { calculation = calculation.slice(0, -2) + calculation.slice(-1); }
+}
+
+function checkForDoubleDot()
+{
+    // Gets the last entry number (in "13+12-15.23*17.98" gets "17.98")
+    var last_number = calculation.match(/([\d\.]+)$/)[1];
+    // If double dot detected, deletes the oldest one
+    if (/\./.test(last_number))
+    {
+        last_number = last_number.split(".").join("");
+        calculation = calculation.slice(0, -last_number.length) + last_number;
+    }
+    calculation += ".";
+}
+
+function calculate()
+{
+    
 }
 
 $(document).ready(function()
