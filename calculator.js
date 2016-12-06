@@ -5,6 +5,9 @@ function number_entry()
 {
     calculation += this.textContent;
     console.log(calculation);
+    
+    set_display_text(false);
+    set_secondary_display_text();
 }
 
 function operation_entry()
@@ -17,6 +20,8 @@ function operation_entry()
         default: calculation += this.textContent; checkForDoubleOp();
     }
     console.log(calculation);
+    
+    set_secondary_display_text();
 }
 
 function checkForDoubleOp()
@@ -50,7 +55,7 @@ function calculate()
     console.log(op);
     
     // Operates
-    result += numbers[0];
+    result = numbers[0];
     for (var i=0; i<op.length; i++)
     {
         switch (op[0])
@@ -62,7 +67,21 @@ function calculate()
         }
     }
     console.log("Total: " + result);
+    
+    set_display_text(true);
 }
+
+function set_display_text(isResult)
+{   
+    var show_n = "0";
+    if (isResult) { show_n = result + ""; }
+    else { show_n = calculation.match(/([\d\.]+)$/)[1]; }
+    
+    $(".main-display").text(show_n);
+}
+
+function set_secondary_display_text()
+{ $(".secondary-display").text(calculation); }
 
 $(document).ready(function()
 {
