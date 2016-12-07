@@ -1,16 +1,55 @@
+/* Colors
+#a4b7ce
+#5a6b8c
+#fff
+Background: #5c79a1
+
+*/
+
 body
 {
-    background-color: #FFF;
+    background-color: #5c79a1;
 }
 
 #calculator
 {
     width: 300px;
     margin: 100px auto;
+    padding: 7px;
+    border-radius: 1px;
+    background-color: #a4b7ce;
 }
 
 #display
 {
     color: white;
     background-color: black;
+}
+
+button
+{
+    color: #fff;
+    background-color: #5a6b8c;
+    border: none;
+    margin: 1px;
+    border-radius: 1px;
+    width: 30%;
+    height: 100px;
+    font-size: 30px;
+}
+
+#button-grid
+{
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.row
+{
+    display: block;
+}
+
+.operations button
+{
+    width: 17.7%;
 }
