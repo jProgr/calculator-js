@@ -58,7 +58,8 @@ function calculate()
     result = numbers[0];
     for (var i=0; i<op.length; i++)
     {
-        switch (op[0])
+        console.log("In for: " + result + " : " + op[0]);
+        switch (op[i])
         {
             case "+": result += numbers[i + 1]; break;
             case "-": result -= numbers[i + 1]; break;
