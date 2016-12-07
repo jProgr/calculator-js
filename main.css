@@ -1,11 +1,12 @@
 body
 {
-    background-color: #050505;
+    background-color: #FFF;
 }
 
 #calculator
 {
-    margin: 0 auto;
+    width: 300px;
+    margin: 100px auto;
 }
 
 #display
