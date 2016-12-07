@@ -66,6 +66,7 @@ function calculate()
             case "/": result /= (numbers[i + 1] === 0) ? 1 : numbers[i + 1]; break;
         }
     }
+    result = result.toFixed(3);
     console.log("Total: " + result);
     
     set_display_text(true);
