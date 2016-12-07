@@ -14,7 +14,7 @@ function operation_entry()
 {
     switch (this.textContent)
     {
-        case "C": calculation = ""; break;
+        case "C": calculation = ""; set_display_text(true); break;
         case ".": checkForDoubleDot(); break;
         case "=": calculate(); break;
         default: calculation += this.textContent; checkForDoubleOp();
